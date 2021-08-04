@@ -11,14 +11,14 @@ function App() {
     <MovieState>
       <BrowserRouter>
         <Header />
-        <main className={classes.container}>
+        <div className={classes.container}>
           <Container max-width="sm">
             <Switch>
               <Route path="/" exact component={StartPage} />
               <Route path="/movies/:id" component={MoviePage} />
             </Switch>
           </Container>
-        </main>
+        </div>
       </BrowserRouter>
     </MovieState>
   );
