@@ -7,6 +7,9 @@ import { MovieContext } from "../context/MovieContext/MovieContext";
 
 export const StartPage = () => {
   const { movies, loading, genres } = useContext(MovieContext);
+  if (loading) {
+    return <CircularProgress />;
+  }
   return (
     <Fragment>
       <SearchForm />
