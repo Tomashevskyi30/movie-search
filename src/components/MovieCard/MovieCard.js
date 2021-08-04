@@ -11,7 +11,7 @@ import {
 import { useStyles } from "./MovieCardStyles";
 import Rating from "@material-ui/lab/Rating";
 import { formatDate, getMovieGenres, getNames, getYear } from "../../utils";
-import image404 from '../../img/404.jpg'
+import image404 from "../../img/404.jpg";
 const MovieCard = ({ movie, genres }) => {
   const classes = useStyles();
   return (
@@ -43,12 +43,14 @@ const MovieCard = ({ movie, genres }) => {
 
         <CardContent className={classes.innerCard}>
           {movie.poster_path !== null ? (
-            <CardMedia
-              className={classes.media}
-              image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-              title="poster"
-              alt="logo"
-            />
+            <Link to={`/movies/${movie.id}`} className={classes.link}>
+              <CardMedia
+                className={classes.media}
+                image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                title="poster"
+                alt="logo"
+              />
+            </Link>
           ) : (
             <CardMedia
               className={classes.media}

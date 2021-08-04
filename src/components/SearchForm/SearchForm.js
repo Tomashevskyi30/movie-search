@@ -7,38 +7,38 @@ import { MovieContext } from "../../context/MovieContext/MovieContext";
 const SearchForm = () => {
   const classes = useStyles();
 
-  const [value,setValue] = useState('')
-  const movies = useContext(MovieContext)
-    
-  const onSearch = (e)=>{
-      e.preventDefault();
-      movies.clearMovies();
-    if(value.trim()){
-        movies.searchMovies(value.trim())
+  const [value, setValue] = useState("");
+  const movies = useContext(MovieContext);
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    movies.clearMovies();
+    if (value.trim()) {
+      movies.searchMovies(value.trim());
     } else {
-        movies.getDefaultMovies();
-    }
-    setValue("")
-  }
-  useEffect(()=>{
-    movies.getDefaultMovies();
-    movies.getGenres()
-  },[])
-  const onDefault = ()=>{
       movies.getDefaultMovies();
-  }
+    }
+    setValue("");
+  };
+  useEffect(() => {
+    movies.getDefaultMovies();
+    movies.getGenres();
+  }, []);
+  const onDefault = () => {
+    movies.getDefaultMovies();
+  };
   return (
     <Grid align="center">
       <Paper component="form" className={classes.root}>
-          <IconButton onClick={onDefault}>
+        <IconButton onClick={onDefault}>
           <MovieFilterIcon />
-          </IconButton>
-      
+        </IconButton>
+
         <InputBase
           className={classes.input}
           placeholder="Type the movie"
           inputProps={{ "aria-label": "search google maps" }}
-          onChange={event=>setValue(event.target.value)}
+          onChange={(event) => setValue(event.target.value)}
           value={value}
         />
         <IconButton

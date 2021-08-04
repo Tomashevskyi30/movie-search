@@ -85,7 +85,11 @@ export const MoviePage = ({ match }) => {
               />
             )
           ) : (
-            <CircularProgress />
+            <CardMedia
+              className={classes.media}
+              image={`${image404}`}
+              title="poster"
+            />
           )}
           <Typography className={classes.overview}>{overview}</Typography>
         </div>

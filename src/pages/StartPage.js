@@ -6,16 +6,17 @@ import SearchForm from "../components/SearchForm/SearchForm";
 import { MovieContext } from "../context/MovieContext/MovieContext";
 
 export const StartPage = () => {
-  const { movies, loading,genres } = useContext(MovieContext);
-  console.log(movies);
+  const { movies, loading, genres } = useContext(MovieContext);
   return (
     <Fragment>
-      <SearchForm/>
+      <SearchForm />
       <div className="row">
         {loading ? (
-          <CircularProgress/>
+          <CircularProgress />
         ) : movies.length === 0 ? (
-          <Typography color='error' variant="h3">There are no movies with this name</Typography>
+          <Typography color="error" variant="h3">
+            There are no movies with this name
+          </Typography>
         ) : (
           movies.map((movie) => {
             return (
