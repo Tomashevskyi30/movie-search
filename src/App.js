@@ -14,7 +14,7 @@ function App() {
         <div className={classes.container}>
           <Container max-width="sm">
             <Switch>
-              <Route path="/" exact component={StartPage} />
+              <Route path="/movie-search" exact component={StartPage} />
               <Route path="/movies/:id" component={MoviePage} />
             </Switch>
           </Container>

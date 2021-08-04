@@ -11,9 +11,8 @@ import {
 import { useStyles } from "./MovieCardStyles";
 import Rating from "@material-ui/lab/Rating";
 import { formatDate, getMovieGenres, getNames, getYear } from "../../utils";
-
-const MovieCard = ({ movie,genres}) => {
-
+import image404 from '../../img/404.jpg'
+const MovieCard = ({ movie, genres }) => {
   const classes = useStyles();
   return (
     <Grid item className={classes.cardWrapper}>
@@ -43,22 +42,32 @@ const MovieCard = ({ movie,genres}) => {
         </div>
 
         <CardContent className={classes.innerCard}>
+          {movie.poster_path !== null ? (
             <CardMedia
               className={classes.media}
               image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
               title="poster"
               alt="logo"
             />
-          
+          ) : (
+            <CardMedia
+              className={classes.media}
+              image={`${image404}`}
+              title="poster"
+              alt="logo"
+            />
+          )}
+
           <CardContent className={classes.cardBody}>
             <Typography variant="body2" className={classes.cardInfo}>
               {movie.overview}
             </Typography>
             <Typography variant="body2" className={classes.cardYear}>
-              Release date: {movie.release_date ? formatDate(movie.release_date) : `unknown`}
+              Release date:{" "}
+              {movie.release_date ? formatDate(movie.release_date) : `unknown`}
             </Typography>
             <Typography variant="body2" className={classes.cardGenres}>
-              genres:{getNames(getMovieGenres(genres,movie.genre_ids))}
+              genres:{getNames(getMovieGenres(genres, movie.genre_ids))}
             </Typography>
           </CardContent>
         </CardContent>

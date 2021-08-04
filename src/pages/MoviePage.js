@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { MovieContext } from "../context/MovieContext/MovieContext";
 import { getNames, getYear } from "../utils";
 import { useStyles } from "./MoviePageStyles";
-
+import image404 from "../img/404.jpg";
 export const MoviePage = ({ match }) => {
   const classes = useStyles();
   const { getMovie, loading, movie } = useContext(MovieContext);
@@ -48,9 +48,10 @@ export const MoviePage = ({ match }) => {
   if (production_companies) {
     renderCompanies = getNames(production_companies);
   }
-  const goToPageHandler=()=>{
-      window.open(`https://www.themoviedb.org/movie/${id}`)
-  }
+  const goToPageHandler = () => {
+    window.open(`https://www.themoviedb.org/movie/${id}`);
+  };
+
   return (
     <div>
       <Container max-width="sm" className={classes.container}>
@@ -70,12 +71,19 @@ export const MoviePage = ({ match }) => {
         </div>
         <div className={classes.movieBody}>
           {poster_path ? (
-            <CardMedia
-              className={classes.media}
-              image={`https://image.tmdb.org/t/p/w185/${poster_path}`}
-              title="poster"
-              alt="logo"
-            />
+            poster_path !== null ? (
+              <CardMedia
+                className={classes.media}
+                image={`https://image.tmdb.org/t/p/w185/${poster_path}`}
+                title="poster"
+              />
+            ) : (
+              <CardMedia
+                className={classes.media}
+                image={`${image404}`}
+                title="poster"
+              />
+            )
           ) : (
             <CircularProgress />
           )}
@@ -91,16 +99,24 @@ export const MoviePage = ({ match }) => {
             Budget: {new Intl.NumberFormat().format(budget)} $
           </Typography>
           <Typography>
-            Revenue: {new Intl.NumberFormat().format(revenue)} $ 
+            Revenue: {new Intl.NumberFormat().format(revenue)} $
           </Typography>
           <Typography>Runtime: {runtime} min</Typography>
           <Typography>Production: {renderCompanies}</Typography>
         </div>
         <div className={classes.btnContainer}>
-        <Link to="/" className={classes.link}>
-          <Button className={classes.btn} variant="contained">Back</Button>
-        </Link>
-        <Button onClick={goToPageHandler} className={classes.btn} variant="contained">Page on movieDB</Button>
+          <Link to="/movie-search" className={classes.link}>
+            <Button className={classes.btn} variant="contained">
+              Back
+            </Button>
+          </Link>
+          <Button
+            onClick={goToPageHandler}
+            className={classes.btn}
+            variant="contained"
+          >
+            Page on movieDB
+          </Button>
         </div>
       </Container>
     </div>
