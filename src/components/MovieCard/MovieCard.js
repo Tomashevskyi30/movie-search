@@ -18,7 +18,7 @@ const MovieCard = ({ movie, genres }) => {
     <Grid item className={classes.cardWrapper}>
       <Card className={classes.card} variant="outlined">
         {movie.release_date ? (
-          <Link to={`/movies/${movie.id}`} className={classes.link}>
+          <Link to={`/movie-search/movies/${movie.id}`} className={classes.link}>
             <Typography variant="h5" className={classes.cardTitle}>
               {`${movie.title}(${getYear(movie.release_date)})`}
             </Typography>
@@ -43,7 +43,7 @@ const MovieCard = ({ movie, genres }) => {
 
         <CardContent className={classes.innerCard}>
           {movie.poster_path !== null ? (
-            <Link to={`/movies/${movie.id}`} className={classes.link}>
+            <Link to={`/movie-search/movies/${movie.id}`} className={classes.link}>
               <CardMedia
                 className={classes.media}
                 image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
