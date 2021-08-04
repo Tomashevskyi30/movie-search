@@ -15,7 +15,7 @@ function App() {
           <Container max-width="sm">
             <Switch>
               <Route path="/movie-search" exact component={StartPage} />
-              <Route path="/movie-search/movie/:id" component={MoviePage} />
+              <Route path="/movie-search/movies/:id" component={MoviePage} />
             </Switch>
           </Container>
         </div>

@@ -43,7 +43,7 @@ const MovieCard = ({ movie, genres }) => {
 
         <CardContent className={classes.innerCard}>
           {movie.poster_path !== null ? (
-            <Link to={`/movie-search/movie/${movie.id}`} className={classes.link}>
+            <Link to={`/movie-search/movies/${movie.id}`} className={classes.link}>
               <CardMedia
                 className={classes.media}
                 image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
