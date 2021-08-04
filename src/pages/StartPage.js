@@ -7,9 +7,7 @@ import { MovieContext } from "../context/MovieContext/MovieContext";
 
 export const StartPage = () => {
   const { movies, loading, genres } = useContext(MovieContext);
-  if (loading) {
-    return <CircularProgress />;
-  }
+
   return (
     <Fragment>
       <SearchForm />
@@ -23,7 +21,7 @@ export const StartPage = () => {
         ) : (
           movies.map((movie) => {
             return (
-              <div className="col-sm-4 mb-4" key={movie.id}>
+              <div key={movie.id}>
                 <MovieCard movie={movie} genres={genres} />
               </div>
             );
